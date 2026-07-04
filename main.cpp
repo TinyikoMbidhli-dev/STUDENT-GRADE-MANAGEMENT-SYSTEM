@@ -50,6 +50,32 @@ void displayAll()
 
     }
 
+    void searchByName()
+    {
+        string search;
+
+        cout << "ENTER STUDENT NAME: ";
+        cin.ignore();
+        getline(cin, search);
+
+        bool found = false;
+        for ( int i = 0; i < counT; i++)
+
+        {
+            if ( names[i] == search)
+            {
+                cout << "FOUND: " << names[i] << " | ID: " << ids[i] <<" | GRADE: " << grades[i] << "%" << endl;
+                found = true; 
+            }
+            if (!found)
+            {
+                cout << "STUDENT WITH THE ENTERRED NAME NOT FOUND." << endl;
+                cout << endl;
+            }
+            
+        }
+
+    }
 
 
 
@@ -61,34 +87,46 @@ int main()
     do
     {
         cout << "\n\nMAIN MENU\n\n" << endl;
-        cout << "\n1. ADD STUDENT\n2. DISPLAY ALL FILES\n3. EXIT\n\n" << endl;
+        cout << "\n1. ADD STUDENT\n2. SEARCH STUDENT BY NAME\n3. DISPLAY ALL FILES\n3. EXIT\n\n" << endl;
+        cout << endl;
         cin >> response;
         cout << endl;
 
-        if (response == 1)
-
+        switch (response)
+    {
+        case 1:
         {
             addStudent();
             cout << endl;
+            break;
         }
 
-        else if (response == 2)
+        case 2: 
+        {
+           searchByName();
+           break;
+
+        }
+
+        case 3: 
         {
             displayAll();
             cout << endl;
+            break;
         }
 
-    } while (response != 3);
+        default:
+        {
+            cout << "PLEASE CHOOSE OPTIONS 1 - 4" << endl;
+        }
+    }
+
+
+
+    } while (response != 5);
     
 
-
-
-
-
-
-
-
-
+//save to file feature
 
 
 
