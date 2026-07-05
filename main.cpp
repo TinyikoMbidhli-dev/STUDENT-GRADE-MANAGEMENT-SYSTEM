@@ -50,6 +50,36 @@ void displayAll()
 
     }
 
+
+
+
+    void saveToFile()
+    {
+      ofstream file("records.txt");
+
+      if (!file)
+      {
+        cout << "ERROR: COULD NOT OPEN FILE" << endl;
+        cout << endl;
+        return;
+      }
+
+      file << "=== STUDENT RECORDS ===" << endl;
+
+      for ( int i = 0; i < counT; i++)
+      {
+        cout << names[i] << " | ID: " << ids[i] << " | GRADE: " << grades[i] << "%" << endl;
+      }
+
+      file.close();
+      cout << "RECORDS SAVED TO records.txt" << endl;
+      cout << endl;
+
+    }
+
+
+
+
     void searchByName()
     {
         string search;
@@ -87,7 +117,7 @@ int main()
     do
     {
         cout << "\n\nMAIN MENU\n\n" << endl;
-        cout << "\n1. ADD STUDENT\n2. SEARCH STUDENT BY NAME\n3. DISPLAY ALL FILES\n3. EXIT\n\n" << endl;
+        cout << "\n1. ADD STUDENT\n2. SEARCH STUDENT BY NAME\n3. DISPLAY ALL FILES\n4. SAVE TO FILE\n5. EXIT\n\n" << endl;
         cout << endl;
         cin >> response;
         cout << endl;
@@ -108,10 +138,22 @@ int main()
 
         }
 
+
         case 3: 
         {
             displayAll();
             cout << endl;
+            break;
+        }
+
+        case 4:
+        {
+            saveToFile();
+        }
+
+        case 5:
+        {
+            cout << "\nSTUDENT GRADE MANAGER CLOSE SUCCESSFULLY..\n" << endl;
             break;
         }
 
